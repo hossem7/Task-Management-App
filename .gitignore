@@ -1,0 +1,6 @@
+# Visual Studio workspace files
+.vs/
+
+# Build outputs
+**/[Bb]in/
+**/[Oo]bj/
