@@ -1,4 +1,5 @@
 using backend.Data;
+using backend.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,8 +11,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+// Register the ApplicationDbContext (EF Core) and TaskService (Service Layer) with dependency injection container
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite("Data Source=tasks.db"));
+
+builder.Services.AddScoped<ITaskService, TaskService>();
 
 var app = builder.Build();
 
