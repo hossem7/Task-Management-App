@@ -12,3 +12,6 @@ obj/
 *.db
 *.db-shm
 *.db-wal
+
+# Temp & backup files
+*.tmp
