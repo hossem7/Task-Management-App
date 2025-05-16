@@ -1,6 +1,14 @@
-# Visual Studio workspace files
+# Visual Studio
 .vs/
+*.suo
+*.user
+*.csproj.user
 
 # Build outputs
-**/[Bb]in/
-**/[Oo]bj/
+bin/
+obj/
+
+# SQLite DB
+*.db
+*.db-shm
+*.db-wal
