@@ -1,6 +1,6 @@
-﻿using backend.Models;
+﻿using TaskManager.Api.Models;
 
-namespace backend.Services
+namespace TaskManager.Api.Services
 {
     public interface ITaskService
     {

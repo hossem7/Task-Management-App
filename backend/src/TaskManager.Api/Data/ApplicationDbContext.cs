@@ -1,7 +1,7 @@
-﻿using backend.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using TaskManager.Api.Models;
 
-namespace backend.Data
+namespace TaskManager.Api.Data
 {
     public class ApplicationDbContext : DbContext
     {

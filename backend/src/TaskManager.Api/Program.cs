@@ -1,6 +1,6 @@
-using backend.Data;
-using backend.Services;
 using Microsoft.EntityFrameworkCore;
+using TaskManager.Api.Data;
+using TaskManager.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

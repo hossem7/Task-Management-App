@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using backend.Data;
+using TaskManager.Api.Data;
 
 #nullable disable
 
-namespace backend.Migrations
+namespace TaskManager.Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250516002304_InitialCreate")]
