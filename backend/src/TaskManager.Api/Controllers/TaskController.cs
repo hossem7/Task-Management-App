@@ -1,11 +1,9 @@
-﻿using backend.Data;
-using backend.Models;
-using backend.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using TaskManager.Api.Models;
+using TaskManager.Api.Services;
 
 
-namespace backend.Controllers
+namespace TaskManager.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

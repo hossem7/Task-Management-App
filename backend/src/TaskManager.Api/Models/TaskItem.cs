@@ -1,4 +1,4 @@
-﻿namespace backend.Models
+﻿namespace TaskManager.Api.Models
 {
     public class TaskItem
     {

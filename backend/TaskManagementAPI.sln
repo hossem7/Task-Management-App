@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36109.1 d17.14
+VisualStudioVersion = 17.14.36109.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backend", "backend\backend.csproj", "{C099C001-30BF-416F-973E-9744BF4334FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Api", "src\TaskManager.Api\TaskManager.Api.csproj", "{F88ACD90-DF91-2ADB-EA75-FBB6CEA6721F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Tests", "tests\TaskManager.Tests\TaskManager.Tests.csproj", "{7954314B-E188-078A-3191-395584BE3B5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C099C001-30BF-416F-973E-9744BF4334FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C099C001-30BF-416F-973E-9744BF4334FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C099C001-30BF-416F-973E-9744BF4334FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C099C001-30BF-416F-973E-9744BF4334FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F88ACD90-DF91-2ADB-EA75-FBB6CEA6721F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F88ACD90-DF91-2ADB-EA75-FBB6CEA6721F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F88ACD90-DF91-2ADB-EA75-FBB6CEA6721F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F88ACD90-DF91-2ADB-EA75-FBB6CEA6721F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7954314B-E188-078A-3191-395584BE3B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7954314B-E188-078A-3191-395584BE3B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7954314B-E188-078A-3191-395584BE3B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7954314B-E188-078A-3191-395584BE3B5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

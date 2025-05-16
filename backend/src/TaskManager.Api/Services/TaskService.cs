@@ -1,8 +1,8 @@
-﻿using backend.Data;
-using backend.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using TaskManager.Api.Data;
+using TaskManager.Api.Models;
 
-namespace backend.Services
+namespace TaskManager.Api.Services
 {
     public class TaskService : ITaskService
     {
