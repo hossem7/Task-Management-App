@@ -6,7 +6,7 @@ using TaskManager.Api.Services;
 namespace TaskManager.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]s")]
     public class TaskController : ControllerBase
     {
         private readonly ITaskService _svc;
