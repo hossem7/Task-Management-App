@@ -61,7 +61,7 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
         setLoading(true);
         try {
             const updated = await UpdateCompletionStatus(id);
-            setTasks((prev) => prev.map((t) => (t.Id === id ? updated : t)));
+            setTasks((prev) => prev.map((t) => (t.id === id ? updated : t)));
         } catch (e) {
             setError(e as Error);
         } finally {
@@ -73,7 +73,7 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
         setLoading(true);
         try {
             await DeleteTask(id);
-            setTasks((prev) => prev.filter((t) => t.Id !== id));
+            setTasks((prev) => prev.filter((t) => t.id !== id));
         } catch (e) {
             setError(e as Error);
         } finally {
