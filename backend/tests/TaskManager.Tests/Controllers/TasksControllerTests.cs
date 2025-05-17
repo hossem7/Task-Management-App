@@ -67,17 +67,23 @@ namespace TaskManager.Tests.Controllers
         {
             // Arrange
             var taskId = 1;
+            var updatedTask = new TaskItem { Id = taskId, Title = "Test", IsCompleted = true };
+            
             var svcMock = new Mock<ITaskService>();
             svcMock.Setup(s => s.ToggleAsync(taskId))
-                   .Returns(Task.CompletedTask);
-
+                   .ReturnsAsync(updatedTask);
             var controller = new TaskController(svcMock.Object);
 
             // Act
             var actionResult = await controller.Toggle(taskId);
 
             // Assert
-            actionResult.Should().BeOfType<NoContentResult>();
+            var Result = actionResult.Result as OkObjectResult;
+            Result.Should().NotBeNull();
+            Result.StatusCode.Should().Be(200);
+
+            var returned = Result.Value as TaskItem;
+            returned.Should().BeEquivalentTo(updatedTask);
         }
 
         [Fact]
@@ -86,16 +92,16 @@ namespace TaskManager.Tests.Controllers
             // Arrange
             var taskId = 1;
             var svcMock = new Mock<ITaskService>();
+
             svcMock.Setup(s => s.ToggleAsync(taskId))
                    .ThrowsAsync(new KeyNotFoundException());
-
             var controller = new TaskController(svcMock.Object);
 
             // Act
             var actionResult = await controller.Toggle(taskId);
 
             // Assert
-            actionResult.Should().BeOfType<NotFoundResult>();
+            actionResult.Result.Should().BeOfType<NotFoundResult>();
         }
 
         [Fact]

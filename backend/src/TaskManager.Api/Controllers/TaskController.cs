@@ -35,12 +35,12 @@ namespace TaskManager.Api.Controllers
 
         // PATCH: /tasks/{id}/toggle
         [HttpPatch("{id}/toggle")]
-        public async Task<IActionResult> Toggle(int id)
+        public async Task<ActionResult<TaskItem>> Toggle(int id)
         {
             try
             {
-                await _svc.ToggleAsync(id);
-                return NoContent();
+                var updated = await _svc.ToggleAsync(id);
+                return Ok(updated);
             }
             catch (KeyNotFoundException)
             {

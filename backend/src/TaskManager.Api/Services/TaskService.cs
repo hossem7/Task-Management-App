@@ -25,12 +25,13 @@ namespace TaskManager.Api.Services
             return newTask;
         }
 
-        public async Task ToggleAsync(int id)
+        public async Task<TaskItem> ToggleAsync(int id)
         {
             var task = await _db.Tasks.FindAsync(id)
                        ?? throw new KeyNotFoundException($"Task with {id} not found from the list");
             task.IsCompleted = !task.IsCompleted;
             await _db.SaveChangesAsync();
+            return task;
         }
 
         public async Task DeleteAsync(int id)
