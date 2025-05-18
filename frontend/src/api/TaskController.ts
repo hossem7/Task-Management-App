@@ -16,13 +16,13 @@ const api = axios.create({
 })
 
 export const GetTasks = (): Promise<Task[]> =>
-    api.get<Task[]>('/tasks').then(res => res.data)
+    api.get<Task[]>('/tasks/getTasks').then(res => res.data)
 
 export const CreateTask = (t: string): Promise<Task> =>
-    api.post<Task>('/tasks', { title: t }).then(res => res.data)
+    api.post<Task>('/tasks/createTask', { title: t }).then(res => res.data)
 
 export const UpdateCompletionStatus = (id: number): Promise<Task> =>
-    api.patch<Task>(`/tasks/${id}/toggle`).then((res) => res.data);
+    api.patch<Task>(`/tasks/${id}/toggleTask`).then((res) => res.data);
 
 export const DeleteTask = (id: number): Promise<void> =>
-    api.delete(`/tasks/${id}`).then(() => {});
+    api.delete(`/tasks/${id}/deleteTask`).then(() => {});

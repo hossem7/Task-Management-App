@@ -6,7 +6,7 @@ using TaskManager.Api.Services;
 namespace TaskManager.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]s")]
+    [Route("api/[controller]s/")]
     public class TaskController : ControllerBase
     {
         private readonly ITaskService _svc;
@@ -15,16 +15,16 @@ namespace TaskManager.Api.Controllers
             _svc = svc;
         }
 
-        // GET: /tasks
-        [HttpGet]
+        // GET: /tasks/getTasks
+        [HttpGet("getTasks")]
         public async Task<ActionResult<IEnumerable<TaskItem>>> GetAll()
         {
             var list = await _svc.GetAllAsync();
             return Ok(list);
         }
 
-        // POST: /tasks
-        [HttpPost]
+        // POST: /tasks/createTask
+        [HttpPost("createTask")]
         public async Task<ActionResult<TaskItem>> Create(TaskItem newTask)
         {
             var created = await _svc.CreateAsync(newTask);
@@ -33,8 +33,8 @@ namespace TaskManager.Api.Controllers
                                    created);
         }
 
-        // PATCH: /tasks/{id}/toggle
-        [HttpPatch("{id}/toggle")]
+        // PATCH: /tasks/{id}/toggleTask
+        [HttpPatch("{id}/toggleTask")]
         public async Task<ActionResult<TaskItem>> Toggle(int id)
         {
             try
@@ -49,7 +49,7 @@ namespace TaskManager.Api.Controllers
         }
 
         // DELETE: /tasks/{id}
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}/deleteTask")]
         public async Task<IActionResult> Delete(int id)
         {
             try
