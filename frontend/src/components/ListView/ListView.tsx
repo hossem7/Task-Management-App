@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { TaskItem } from "../TaskItem/TaskItem";
+import { TaskItem } from "./TaskItem";
 import { useTasks } from "../../context/TasksContext";
 
 const ListContainer = styled.div`
