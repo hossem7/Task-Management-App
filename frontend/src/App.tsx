@@ -1,11 +1,15 @@
+import { useState } from "react";
 import { TasksPage } from "./pages/TasksPage";
+import { LandingPage } from "./pages/LandingPage";
 
 function App() {
-  return (
-    <div>
-      <TasksPage />
-    </div>
-  );
+    const [showLanding, setShowLanding] = useState(true);
+
+    if (showLanding) {
+        return <LandingPage viewTasks={() => setShowLanding(false)} />;
+    }
+
+    return <TasksPage />;
 }
 
-export default App
+export default App;
