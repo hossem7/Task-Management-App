@@ -55,14 +55,13 @@ const Content = styled.div`
 
 const Title = styled.div<{ $completed: boolean }>`
     font-size: 1.2rem;
+    font-weight: 500;
     color: ${({ $completed }) => ($completed ? "#888" : "#111")};
     margin-bottom: 4px;
-
-    /* clamp to one line with ellipsis */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 240px; /* approx. 30 chars at ~8px each; adjust to taste */
+    max-width: 240px; /* approximately 30 chars at ~8px each */
 `;
 
 const CreatedAt = styled.div`

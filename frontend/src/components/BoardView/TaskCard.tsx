@@ -44,6 +44,7 @@ const Title = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 240px; /* approximately 30 chars at ~8px each */
 `;
 
 const CreatedAt = styled.div`
