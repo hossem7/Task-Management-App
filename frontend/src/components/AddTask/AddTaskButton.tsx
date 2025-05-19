@@ -1,27 +1,44 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import Button from "antd/es/button";
 
 interface AddTaskButtonProps {
-  onClick: () => void;
+    onClick: () => void;
 }
 
-const Button = styled.button`
-  background-color: #28a745;  /* green */
-  color: #fff;                /* white text */
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  margin: 16px auto;          /* center under toggle */
-  display: block;
+const btnText = "Add Task";
 
-  &:hover {
-    background-color: #218838;
-  }
+const ButtonContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+`;
+
+const StyledButton = styled(Button)`
+    && {
+        background-color: #28a745;
+        border-color: #28a745;
+        color: #fff;
+        border-radius: 16px;
+        padding: 20px 20px;
+        font-size: 16px;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &&:hover,
+    &&:focus {
+        background-color: #218838 !important;
+        border-color: #218838 !important;
+        color: #fff !important;
+    }
 `;
 
 export const AddTaskButton: React.FC<AddTaskButtonProps> = ({ onClick }) => (
-  <Button onClick={onClick}>Add Task</Button>
+    <ButtonContainer>
+        <StyledButton type="primary" onClick={onClick}>
+            {btnText}
+        </StyledButton>
+    </ButtonContainer>
 );

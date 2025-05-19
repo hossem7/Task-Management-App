@@ -5,7 +5,6 @@ import {
     useEffect,
     type ReactNode,
 } from "react";
-
 import {
     CreateTask,
     DeleteTask,
@@ -13,6 +12,7 @@ import {
     GetTasks,
     UpdateCompletionStatus,
 } from "../api/TaskController";
+import { showNotification } from "../utils/Notification";
 
 type TasksContextType = {
     tasks: Task[];
@@ -37,8 +37,10 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
         try {
             const data = await GetTasks();
             setTasks(data);
+            showNotification('Tasks loaded successfully', 'success');
         } catch (e) {
             setError(e as Error);
+            showNotification(`Failed to load tasks`, 'error');
         } finally {
             setLoading(false);
         }
@@ -50,8 +52,10 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
         try {
             const newTask = await CreateTask(title);
             setTasks((prev) => [newTask, ...prev]);
+            showNotification('Added a task successfully', 'success');
         } catch (e) {
             setError(e as Error);
+            showNotification(`Failed to create a task`, 'error');
         } finally {
             setLoading(false);
         }
@@ -62,8 +66,10 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
         try {
             const updated = await UpdateCompletionStatus(id);
             setTasks((prev) => prev.map((t) => (t.id === id ? updated : t)));
+            showNotification('Changed the completion status of the task successfully', 'success');
         } catch (e) {
             setError(e as Error);
+            showNotification(`Failed to change the completion status of the task`, 'error');
         } finally {
             setLoading(false);
         }
@@ -74,8 +80,10 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
         try {
             await DeleteTask(id);
             setTasks((prev) => prev.filter((t) => t.id !== id));
+            showNotification('Deleted a task successfully', 'success');
         } catch (e) {
             setError(e as Error);
+            showNotification(`Failed to delete a task`, 'error');
         } finally {
             setLoading(false);
         }

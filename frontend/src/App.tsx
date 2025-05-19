@@ -1,29 +1,15 @@
-// import { TestAPIButtons } from "./components/TestApiWithButtons"
-import { useTasks } from "./context/TasksContext";
+import { useState } from "react";
 import { TasksPage } from "./pages/TasksPage";
+import { LandingPage } from "./pages/LandingPage";
 
 function App() {
-  const {
-    tasks,
-    loading,
-    error,
-    addTask,
-    toggleCompletion,
-    removeTask,
-  } = useTasks();
+    const [showLanding, setShowLanding] = useState(true);
 
-  if (loading) return <p>Loading…</p>;
-  if (error)   return <p>Error: {error.message}</p>;
+    if (showLanding) {
+        return <LandingPage viewTasks={() => setShowLanding(false)} />;
+    }
 
-  return (
-    <div>
-      
-
-      <div>
-        <TasksPage />
-      </div>
-    </div>
-  );
+    return <TasksPage />;
 }
 
-export default App
+export default App;
