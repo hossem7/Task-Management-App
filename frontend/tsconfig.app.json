@@ -21,7 +21,13 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "types": [
+      "vite/client",        // if using any Vite globals
+      "vitest/globals",     // brings in describe/it/expect, etc.
+      "@testing-library/jest-dom"
+    ]
   },
-  "include": ["src"]
+  "include": ["src", "vitest.config.ts"]
 }
