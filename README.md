@@ -3,7 +3,7 @@
 ## Overview
 A full‑stack MVC task management application built with ASP .NET Core (backend) with EF Core SQLite and React + TypeScript (frontend).
 
-### Backend
+## Backend
 I use ASP.NET Core Web API with EF Core and SQLite in a clean 3‑tier setup:
 
 - Presentation Layer (Controllers/): I map HTTP to service calls in [ApiController] classes, keeping routing and status‑code logic here.
@@ -19,7 +19,7 @@ Endpoints:
 
 I keep EF Core migrations in backend/src/TaskManager.Api/Migrations/ and configure the app to apply them automatically on startup (or run dotnet ef database update if preferred). I expose all my endpoints via Swagger for easy manual QA. All my xUnit + Moq tests live under tests/TaskManager.Tests.
 
-### Frontend
+## Frontend
 I used a component‑based design powered by Vite, React 18, TypeScript and Ant Design (https://ant.design/components/overview/). My code lives under src/ in a feature‑based layout:
 
 - components/ for reusable UI pieces
@@ -37,14 +37,14 @@ The UI has two pages:
 
 In both views, user actions trigger API calls (fetch all tasks, toggle completion, add a task and delete a task). I created a centralized TasksContext plus a useTasks() hook so components share state and avoid duplicate fetches. For styling, I leverage Ant Design components and customize them with the styled-components library for my own layout tweaks. Finally, I chose Vitest (Jest‑like syntax) for unit tests because it integrates natively with Vite and has much faster startup times than Jest.
 
-### Assumptions
+## Assumptions
 - Simple file‑based DB (tasks.db) covers early prototyping without spinning up SQL Server or Postgres
 - For a project of this scale, one‑project solution (API, data, migrations all together) is simpler than fully splitting into Domain/Application/Infrastructure assemblies
 - Controller‑based API: Choosing explicit [ApiController] classes over Minimal APIs for clearer routing and status‑code handling.
 - Single Page Application (SPA-only view): Skipping server‑rendered pages and relying entirely on a React + Vite single‑page app for the UI
 - Dual-layout design: Offering both list and Kanban-style board views to match common task‑management workflows (similar to Jira) and give users flexibility.
 
-### Trade-Offs
+## Trade-Offs
 - SQLite vs SQL Server/Postgres: + No dev setup; – Limited to single‑user file locking and switching to SQL Server/Postgres will require connection‐string and EF migrations tweaking.
 - EF Core vs Raw SQL: + Fast development and type safety; – Less control over query performance and complex joins.
 - One project vs Clean Architecture: + Easier to browse; – Weaker module boundaries if the codebase grows large.
