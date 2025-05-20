@@ -4,10 +4,55 @@
 A full‑stack MVC task management application built with ASP .NET Core (backend) with EF Core SQLite and React + TypeScript (frontend).
 
 ### Backend
-There are 4 endpoints (GET - get all tasks, PUT - create a new task, PATCH - toggle the completion status, DELETE - remove a task). I am using a 3 tier architecture (Presentation Layer - API, Application Layer - Services and Infrastructure Layer - SQLite DB). Controllers map HTTP to service calls, Services contain business logic, and EF Core handles persistence. I keep all my migrations under Migrations/ and apply them automatically at startup in dev. Unit tests are contained under the tests folder. I expose all my endpoints via Swagger for easy manual QA.
+I use ASP.NET Core Web API with EF Core and SQLite in a clean 3‑tier setup:
+
+- Presentation Layer (Controllers/)
+  I map HTTP to service calls in [ApiController] classes, keeping routing and status‑code logic here.
+- Application Layer (Services/ with ITaskService/TaskService)
+  I encapsulate all business logic—creating, toggling, deleting and querying tasks—behind a simple service interface.
+- Infrastructure Layer (Data/TaskDbContext & Migrations/)
+  I handle persistence with SQLite in dev (and swap to EF Core’s In‑Memory provider in tests) and version my schema in src/TaskManager.Api/Migrations.
+
+Endpoints:
+
+- GET /tasks — retrieve all tasks
+- POST /tasks — create a new task
+- PATCH /tasks/{id}/toggle — flip a task’s completion status
+- DELETE /tasks/{id} — remove a task
+
+I keep EF Core migrations in backend/src/TaskManager.Api/Migrations/ and configure the app to apply them automatically on startup (or run dotnet ef database update if preferred). I expose all my endpoints via Swagger for easy manual QA. All my xUnit + Moq tests live under tests/TaskManager.Tests.
 
 ### Frontend
-I am using component based design for my frontend. The UI has two pages: Landing Page and Tasks Page. In the Tasks Page, I seperated the view into two pieces through a view toggle: List View and Board View. In List View, I am showing all the the tasks in 1 list ordered by uncompleted tasks (oldest first) followed by completed tasks. In Board View, I designed a Kanban style board that allows user to drag the task from the to do section to the completed section. In both views, user's action would trigger an API call (ie. fetching all the tasks, changing the completion status using the toggle and adding a new task or deleting a task). 
+I used a component‑based design powered by Vite, React 18, TypeScript and Ant Design (https://ant.design/components/overview/). My code lives under src/ in a feature‑based layout:
+
+- components/ for reusable UI pieces
+- pages/ for route‑level views (Landing, Tasks)
+- hooks/ for custom hooks (e.g. useTasks)
+- services/ for API clients (axios wrappers)
+- context/ for global state providers
+- utils/ for shared helpers
+
+The UI has two pages:
+- Landing Page (a welcome screen with a quick link to Tasks)
+- Tasks Page, where I separated the view into List View and Board View via a toggle.
+- List View shows all tasks in one list ordered by uncompleted first (oldest → newest) then completed.
+- Board View is a Kanban‑style board implemented with react-beautiful-dnd so users can drag tasks from “To Do” to “Completed.”
+
+In both views, user actions trigger API calls (fetch all tasks, toggle completion, add or delete). I created a centralized TasksContext plus a useTasks() hook so components share state and avoid duplicate fetches. For styling, I leverage Ant Design components and customize them with the styled-components library for my own layout tweaks. Finally, I chose Vitest (Jest‑like syntax) for unit tests because it integrates natively with Vite and has much faster startup times than Jest.
+
+### Assumptions
+- Simple file‑based DB (tasks.db) covers early prototyping without spinning up SQL Server or Postgres
+- For a project of this scale, one‑project solution (API, data, migrations all together) is simpler than fully splitting into Domain/Application/Infrastructure assemblies
+- Controller‑based API: Choosing explicit [ApiController] classes over Minimal APIs for clearer routing and status‑code handling.
+- Single Page Application (SPA-only view): Skipping server‑rendered pages and relying entirely on a React + Vite single‑page app for the UI
+- Dual-layout design: Offering both list and Kanban-style board views to match common task‑management workflows (similar to Jira) and give users flexibility.
+
+### Trade-Offs
+- SQLite vs SQL Server/Postgres: + No dev setup; – Limited to single‑user file locking and switching to SQL Server/Postgres will require connection‐string and EF migrations tweaking.
+- EF Core vs Raw SQL: + Fast development and type safety; – Less control over query performance and complex joins.
+- One project vs Clean Architecture: + Easier to browse; – Weaker module boundaries if the codebase grows large.
+- Ant Design vs Custom CSS: + Ready‑made, accessible/responsive components; – Larger bundle and reliance on Ant Design’s theming system.
+- Vitest vs Jest: + Native Vite integration and lightning‑fast startup; – Jest needed extra ESM/Babel config and had slower boot times under Vite. 
 
 Follow the steps below to get it running:
 
