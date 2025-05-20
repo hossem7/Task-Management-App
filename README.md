@@ -63,18 +63,22 @@ Follow the steps below to get it running:
   dotnet tool install --global dotnet-ef
   ```
 
-1. Clone & Restore
+
+1. Clone Repository
 ```bash
 git clone https://github.com/your-org/TaskManagementApp.git
-cd TaskManagementApp
-dotnet restore
 ```
 2. Create/Update Local DB
 ```bash
 cd backend/src/TaskManager.Api
 dotnet ef database update
 ```
-2. Build & Run (Go back to root directory)
+3. Restore (Go back to root directory)
+```bash
+cd TaskManagementApp
+dotnet restore
+```
+4. Build & Run (still in the same root directory)
 ```bash
 cd TaskManagementApp
 dotnet build
