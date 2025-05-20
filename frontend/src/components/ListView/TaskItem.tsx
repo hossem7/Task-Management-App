@@ -69,7 +69,10 @@ const CreatedAt = styled.div`
     color: #666;
 `;
 
-const DeleteBtn = styled(DeleteOutlined)`
+const DeleteBtn = styled(DeleteOutlined).attrs({
+    role: "button",
+    "aria-label": "Delete task",
+})`
     font-size: 25px;
     color: #e74c3c;
     cursor: pointer;
@@ -84,12 +87,12 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle, onDelete }) 
         />
         <Content>
             <Tooltip title={task.title}>
-                <Title $completed={task.isCompleted}>{task.title}</Title>
+                <Title data-testid="task-title" $completed={task.isCompleted}>{task.title}</Title>
             </Tooltip>
             <CreatedAt>
                 Created on: {new Date(task.createdAt).toLocaleDateString()}
             </CreatedAt>
         </Content>
-        <DeleteBtn onClick={() => onDelete(task.id)} />
+        <DeleteBtn id="deleteBtn" onClick={() => onDelete(task.id)} />
     </StyledCard>
 );
