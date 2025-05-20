@@ -7,7 +7,7 @@ A full‑stack MVC task management application built with ASP .NET Core (back
 I use ASP.NET Core Web API with EF Core and SQLite in a clean 3‑tier setup:
 
 - Presentation Layer (Controllers/): I map HTTP to service calls in [ApiController] classes, keeping routing and status‑code logic here.
-- Application Layer (Services/ with ITaskService/TaskService): I encapsulate all business logic-creating, toggling, deleting and querying tasks—behind a simple service interface.
+- Application Layer (Services/ with ITaskService/TaskService): I encapsulate all business logic-creating, toggling, deleting and querying tasks behind a simple service interface.
 - Infrastructure Layer (Data/TaskDbContext & Migrations/): I handle persistence with SQLite in dev and version my schema in src/TaskManager.Api/Migrations.
 
 Endpoints:
