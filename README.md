@@ -25,17 +25,17 @@ I used a component‑based design powered by Vite, React 18, TypeScript and Ant
 - components/ for reusable UI pieces
 - pages/ for route‑level views (Landing, Tasks)
 - hooks/ for custom hooks (e.g. useTasks)
-- services/ for API clients (axios wrappers)
+- api/ for API clients (axios wrappers)
 - context/ for global state providers
-- utils/ for shared helpers
+- utils/ for shared helpers (e.g. toast messages)
 
 The UI has two pages:
 - Landing Page (a welcome screen with a quick link to Tasks)
 - Tasks Page, where I separated the view into List View and Board View via a toggle.
-- List View shows all tasks in one list ordered by uncompleted first (oldest → newest) then completed.
+- List View shows all tasks in one list ordered by uncompleted first (oldest to newest) then completed.
 - Board View is a Kanban‑style board implemented with react-beautiful-dnd so users can drag tasks from “To Do” to “Completed.”
 
-In both views, user actions trigger API calls (fetch all tasks, toggle completion, add or delete). I created a centralized TasksContext plus a useTasks() hook so components share state and avoid duplicate fetches. For styling, I leverage Ant Design components and customize them with the styled-components library for my own layout tweaks. Finally, I chose Vitest (Jest‑like syntax) for unit tests because it integrates natively with Vite and has much faster startup times than Jest.
+In both views, user actions trigger API calls (fetch all tasks, toggle completion, add a task and delete a task). I created a centralized TasksContext plus a useTasks() hook so components share state and avoid duplicate fetches. For styling, I leverage Ant Design components and customize them with the styled-components library for my own layout tweaks. Finally, I chose Vitest (Jest‑like syntax) for unit tests because it integrates natively with Vite and has much faster startup times than Jest.
 
 ### Assumptions
 - Simple file‑based DB (tasks.db) covers early prototyping without spinning up SQL Server or Postgres
