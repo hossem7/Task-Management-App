@@ -52,7 +52,10 @@ const CreatedAt = styled.div`
     color: #666;
 `;
 
-const DeleteBtn = styled(DeleteOutlined)`
+const DeleteBtn = styled(DeleteOutlined).attrs({
+    role: "button",
+    "aria-label": "Delete task",
+})`
     align-self: flex-end;
     font-size: 18px;
     color: #e74c3c;
