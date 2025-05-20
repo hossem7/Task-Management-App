@@ -59,6 +59,10 @@ Expose Swagger UI at https://localhost:7025/swagger/index.html
 
 - Node.js (v14+ recommended)
 - npm or yarn
+- create a .env.local file on the /frontend foler and add this line
+  ```bash
+  VITE_API_URL=https://localhost:7025/api/
+  ```
 
 1. Install & Start
 ```bash
