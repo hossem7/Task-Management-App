@@ -15,6 +15,8 @@ const ToggleWrapper = styled.div`
     justify-content: center;
 `;
 
+// Radio‑button style (AntDesign Segmented) toggle between “List View” and “Board View”.
+// Calls onChange(view) when user switches.
 export const ViewToggle: React.FC<ViewToggleProps> = ({ mode, onChange }) => {
     return (
         <ToggleWrapper>

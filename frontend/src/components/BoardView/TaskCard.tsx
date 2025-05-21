@@ -62,6 +62,7 @@ const DeleteBtn = styled(DeleteOutlined).attrs({
     cursor: pointer;
 `;
 
+// Individual Task Cards using Ant Design Components
 export const TaskCard: React.FC<TaskCardProps> = ({ task, onDelete }) => (
     <StyledCard $completed={task.isCompleted}>
         <Tooltip title={task.title}>

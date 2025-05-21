@@ -4,9 +4,14 @@ using TaskManager.Api.Models;
 
 namespace TaskManager.Api.Services
 {
+    /// <summary>
+    /// Concrete implementation of ITaskService using EF Core for persistence.
+    /// </summary>
     public class TaskService : ITaskService
     {
         private readonly ApplicationDbContext _db;
+
+        // Constructor receives the EF DbContext via DI.
         public TaskService(ApplicationDbContext db)
         {
             _db = db;

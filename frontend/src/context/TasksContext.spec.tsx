@@ -196,20 +196,18 @@ describe("TasksContext", () => {
             wrapper: TasksProvider,
         });
 
-        // 1) manually invoke fetchTasks
+        // manually invoke fetchTasks
         await act(async () => {
             await result.current.fetchTasks();
         });
-        // now tasks should contain our sample
+
         expect(result.current.tasks).toEqual([sample]);
 
-        // 2) invoke removeTask
         await act(async () => {
             await result.current.removeTask(9);
         });
-        // tasks should now be empty
+
         expect(result.current.tasks).toEqual([]);
-        // and DeleteTask should have been called correctly
         expect(DeleteTask).toHaveBeenCalledWith(9);
     });
 });

@@ -7,6 +7,8 @@ import { BoardView } from "../components/BoardView/BoardView";
 
 const BREAKPOINT = 800; // BoardView max-width
 
+// Tasks Page listing the view toggle and both the views
+// Note: ViewToggle Component is not shown when the screen size less than the Breakpoint, so smaller screens can only see ListView
 export const TasksPage: React.FC = () => {
     const [mode, setMode] = useState<ViewMode>("list");
     const [isMobile, setIsMobile] = useState(window.innerWidth < BREAKPOINT);

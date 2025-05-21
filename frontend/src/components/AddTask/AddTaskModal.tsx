@@ -19,12 +19,13 @@ const FormWrapper = styled.div`
     }
 `;
 
+
+// Uses Ant Design's Modal component
 export const AddTasksModal: React.FC<AddTasksModalProps> = ({
     visible,
     onClose,
 }) => {
     const { addTask } = useTasks();
-    // keep the default (unknown) generic so TS is happy
     const [form] = Form.useForm<FormValues>();
 
     const handleOk = async () => {
@@ -35,7 +36,7 @@ export const AddTasksModal: React.FC<AddTasksModalProps> = ({
             form.resetFields();
             onClose();
         } catch {
-            // validation errors will render on the form
+            // validation errors
         }
     };
 

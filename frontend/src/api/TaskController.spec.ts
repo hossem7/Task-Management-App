@@ -24,7 +24,7 @@ import {
     type Task,
 } from "./TaskController";
 
-// Bring in the *same* mockApi by calling axios.create()
+// Bring in the same mockApi by calling axios.create()
 import axios from "axios";
 const mockApi = (axios.create as Mock)();
 

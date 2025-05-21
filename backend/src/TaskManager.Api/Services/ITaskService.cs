@@ -2,6 +2,9 @@
 
 namespace TaskManager.Api.Services
 {
+    /// <summary>
+    /// Defines business operations over TaskItem entities.
+    /// </summary>
     public interface ITaskService
     {
         Task<IEnumerable<TaskItem>> GetAllAsync(); // Get all tasks

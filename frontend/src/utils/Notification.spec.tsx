@@ -41,7 +41,7 @@ describe("showNotification()", () => {
         );
         expect(toast).toBeInTheDocument();
 
-        // Find its close <button> and click it inside act
+        // Find its close button and click it inside act
         const closeBtn = toast
             .closest("div")! /* container */
             .querySelector("button")!;

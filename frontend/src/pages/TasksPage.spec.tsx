@@ -3,9 +3,6 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { vi } from "vitest";
 import { TasksPage } from "./TasksPage";
-import { ViewToggle } from "../components/ViewToggle/ViewToggle";
-
-ViewToggle
 
 // Mock child components
 vi.mock("../components/ViewToggle/ViewToggle", () => ({
