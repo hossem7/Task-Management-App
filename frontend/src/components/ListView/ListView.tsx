@@ -37,6 +37,7 @@ export const ListView: React.FC = () => {
 
     // 3. New tasks go to bottom of uncompleted, and completed at the end
     const sortedTasks = [...uncompleted, ...completed];
+    
     return (
         <ListContainer>
             {sortedTasks.map((task) => (

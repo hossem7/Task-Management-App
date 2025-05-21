@@ -5,6 +5,9 @@ using TaskManager.Api.Services;
 
 namespace TaskManager.Api.Controllers
 {
+    /// <summary>
+    /// Handles HTTP requests for CRUD operations on TaskItem entities.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]s/")]
     public class TaskController : ControllerBase

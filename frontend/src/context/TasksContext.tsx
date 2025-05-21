@@ -111,6 +111,10 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
     );
 };
 
+// React context/provider for task state:  
+// wraps useTasks() hook and makes { tasks, loading, error, addTask, toggle, remove }  
+// available via useContext in any component.
+
 export const useTasks = (): TasksContextType => {
     const context = useContext(TasksContext);
     if (!context)

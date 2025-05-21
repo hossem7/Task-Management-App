@@ -36,6 +36,7 @@ const StartButton = styled(Button)`
     }
 `;
 
+// Simple welcome screen with a link to navigate to the TasksPage.
 export const LandingPage: React.FC<LandingPageProps> = ({ viewTasks }) => (
     <Container>
         <Title>Task Manager App</Title>

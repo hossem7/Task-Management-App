@@ -24,13 +24,10 @@ const ToastWrapper = styled.div<{ type: NotificationType }>`
     position: fixed;
     bottom: 16px;
     right: 16px;
-    background: ${({ type }) =>
-    type === 'success' ? '#f6ffed' : '#fff2f0'};
+    background: ${({ type }) => (type === "success" ? "#f6ffed" : "#fff2f0")};
     border: 1px solid
-        ${({ type }) =>
-        type === 'success' ? '#52c41a' : '#ff4d4f'};
-    color: ${({ type }) =>
-        type === 'success' ? '#389e0d' : '#a8071a'};
+        ${({ type }) => (type === "success" ? "#52c41a" : "#ff4d4f")};
+    color: ${({ type }) => (type === "success" ? "#389e0d" : "#a8071a")};
     padding: 12px 10px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -51,7 +48,7 @@ const CloseButton = styled.button`
 
 const Toast: React.FC<ToastProps> = ({ message, type, onDone }) => {
     const timerRef = useRef<number>(0);
-    
+
     useEffect(() => {
         timerRef.current = window.setTimeout(onDone, 3000);
         return () => {
@@ -74,7 +71,7 @@ const Toast: React.FC<ToastProps> = ({ message, type, onDone }) => {
     );
 };
 
-// since react renders two toasts, which sits in the same spot - 
+// since react renders two toasts, which sits in the same spot -
 // I have to click twice twice to dismiss it. In React 18,
 // <React.StrictMode> cause this issue because it runs the
 // component twice on mount. Fix - Deduplicate toasts

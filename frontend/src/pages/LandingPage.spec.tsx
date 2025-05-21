@@ -24,10 +24,8 @@ describe('LandingPage hide/unmount behavior', () => {
     // Before click, LandingPage heading is visible
     expect(screen.getByRole('heading', { name: /Task Manager App/i })).toBeInTheDocument();
 
-    // Click the button
     fireEvent.click(screen.getByRole('button', { name: /View All Tasks/i }));
 
-    // After click, the heading is gone, and our fallback div exists
     expect(screen.queryByRole('heading', { name: /Task Manager App/i })).toBeNull();
     expect(screen.getByTestId('tasks-root')).toBeInTheDocument();
   });

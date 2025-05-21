@@ -33,6 +33,10 @@ const ColumnHeader = styled.h2`
     margin-bottom: 12px;
 `;
 
+// A Kanban style board with To Do and Completed Column
+// When a task is moved between each column, the toggle endpoint is triggered, changing the toggle status
+// Note: Used Hello Pangea's DND to achieve the drag and drop
+
 export const BoardView: React.FC = () => {
     const { tasks, toggleCompletion, removeTask } = useTasks();
 

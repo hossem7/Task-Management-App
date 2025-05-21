@@ -12,7 +12,7 @@ interface TaskItemProps {
     onDelete: (id: number) => void;
 }
 
-//  Wrap AntD Card so we can control padding, border-radius, and gradient
+// Wrap AntD Card to control padding, border-radius, and gradient
 const StyledCard = styled(Card)<{ $completed: boolean }>`
     && {
         margin-bottom: 10px;
@@ -79,6 +79,7 @@ const DeleteBtn = styled(DeleteOutlined).attrs({
     margin-right: 10px;
 `;
 
+// Individual Task Item using AntDesign Components
 export const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle, onDelete }) => (
     <StyledCard $completed={task.isCompleted}>
         <StyledCheckbox
